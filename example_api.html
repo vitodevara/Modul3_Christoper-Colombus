@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christoper Colombus</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+</head>
+<header> CHRISTOPER COLOMBUS </header>
+<body>
+    <div class="container">
+        <div class="gabung" id="content">
+            <!-- <div class="tengah">
+                <h1 class="namaTengah">Raihan Putra Darmawan </h1>
+                <img src="assets/Untitled design (7).png" alt="fotorehan" class="img-foto">
+                <p class="deskirpsi"> "Jadilah 1% lebih baik</p>
+                <p class="deskirpsi">setiap harinya"</p>
+                <a href="https://www.instagram.com/rai.drmwn/?hl=en">
+                    <i class="fa-brands fa-instagram icons"></i>
+                </a>
+                <a href="https://github.com/Hannzzzz">
+                    <i class="fa-brands fa-github icons"></i>
+                </a>
+            </div> -->
+        </div>
+        <button onclick="diklik()">Click</button>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url: 'https://random-data-api.com/api/v2/users?size=4',
+                method: 'GET',
+                headers: {},
+                dataType: 'json',
+                success: function(response) {
+                    var content = document.getElementById("content")
+                    var result = ""
+                    if (response && response.length > 0) {
+                        for (var index = 0; index < response.length; index++) {
+                            result += `<div class="tengah">
+                                <h1 class="namaTengah">${response[index].first_name} ${response[index].last_name}</h1>
+                                <img src="${response[index].avatar}" alt="fotorehan" class="img-foto">
+                                <p class="deskirpsi">${response[index].employment.title}</p>
+                                <a href="mailto:${response[index].email}">
+                                    <i class="fa-solid fa-envelope icons"></i>
+                                </a>
+                            </div>`
+                        }
+                    }
+                    content.innerHTML = result
+                },
+                error: function(data) {
+                    console.log({data})
+                }
+            });
+        });
+    </script>
+    </div>
+</body>
+<footer> @copyright Christoper Colombus
+    </footer>
+</html>
